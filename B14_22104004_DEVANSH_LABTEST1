@@ -1,0 +1,55 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+cities = ['City A', 'City B', 'City C', 'City D']
+temps = np.array([
+    [30, 32, 31, 29, 28, 27, 26],
+    [35, 34, 36, 33, 32, 31, 30],  
+    [25, 26, 27, 28, 29, 30, 31],  
+    [22, 23, 24, 25, 26, 27, 28]])
+avg = np.mean(temps, axis=1)
+maxtemp = np.max(temps, axis=1)
+mintemp = np.min(temps, axis=1)
+
+print("Average temperatures:", avg)
+print("Max temperatures:", maxtemp)
+print("Min temperatures:", mintemp)
+
+def weeklytrend(data):
+    return np.mean(data, axis=0)
+
+weekly_avg = weeklytrend(temps)
+print("Average temperature for each day :", weekly_avg)
+
+days = np.arange(1, 8)
+
+plt.figure(figsize=(10, 6))
+for i, city in enumerate(cities):
+    plt.plot(days, temps[i], label=city)
+
+plt.title('Temperature Trends for Cities Over 7 Days')
+plt.xlabel('Days')
+plt.ylabel('Temperature (°C)')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+
+temp_ranges = maxtemp - mintemp
+
+plt.figure(figsize=(8, 5))
+plt.bar(city_names, temp_ranges, color=['blue', 'orange', 'green', 'red'])
+plt.title('Temperature Range for Each City Over 7 Days')
+plt.xlabel('City')
+plt.ylabel('Temperature Range (°C)')
+plt.show()    
+
+
+
+
+
+
+
+
+            
+            
